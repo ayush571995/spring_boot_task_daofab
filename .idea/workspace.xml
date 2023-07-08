@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2455349-cd4e-4693-a179-95d1b9f18743" name="Changes" comment="" />
+    <list default="true" id="d2455349-cd4e-4693-a179-95d1b9f18743" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/child-transactions.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parent-transactions.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/TransactionDaoJsonFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/TransactionDaoJsonFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pojo/ParentTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pojo/ParentTransaction.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +43,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -54,6 +62,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "LombokPluginIS_LOMBOK_JPS_FIX_ENABLED": "true",
     "LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled": "true",
     "last_opened_file_path": "C:/Users/ayush/OneDrive/Desktop/projects/java/demo-self-project/spring_boot__test/src/main/java/org/example/dao",

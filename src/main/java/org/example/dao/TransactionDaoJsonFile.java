@@ -47,6 +47,18 @@ public class TransactionDaoJsonFile implements TransactionInterfaceDao {
                 parentToChildTransactionsMap.put(c.getParentId(), tempList);
             }
         }
+        parentTransactionMap.forEach((k,v)->{
+            List<ChildTransactions> tmpList = parentToChildTransactionsMap.get(k);
+            if (tmpList != null)
+            {
+                float totalPaid = 0;
+                for(ChildTransactions c: tmpList){
+                    totalPaid+=c.getPaidAmount();
+                }
+                v.setTotalPaidAmount(totalPaid);
+            }
+
+        });
     }
 
     private ChildTransactions buildChildTxnFromParent(ChildTransactions c)

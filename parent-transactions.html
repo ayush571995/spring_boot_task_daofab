@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parent Transactions</title>
+</head>
+<body>
+<h1>Parent Transactions</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Parent ID</th>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Total Amount</th>
+        <th>Total Paid Amount</th>
+    </tr>
+    </thead>
+    <tbody id="parentTransactionsTableBody"></tbody>
+</table>
+<button id="nextButton">Next</button>
+
+<script>
+        var currentPage = 0;
+
+        function fetchParentTransactions(page) {
+            fetch(`http://localhost:8080/api/v1/get_parent_txn?page=${page}`)
+                .then(response => response.json())
+                .then(data => displayParentTransactions(data.data.data));
+        }
+
+        function displayParentTransactions(transactions) {
+            console.log(transactions);
+            var tableBody = document.getElementById("parentTransactionsTableBody");
+            tableBody.innerHTML = "";
+
+            transactions.forEach(transaction => {
+                var row = document.createElement("tr");
+                row.addEventListener("click", function() {
+                    openChildTransactions(transaction.id);
+                });
+
+                var parentIdCell = document.createElement("td");
+                parentIdCell.textContent = transaction.id;
+                row.appendChild(parentIdCell);
+
+                // Add other cells for Sender, Receiver, Total Amount, Total Paid Amount
+                var senderCell = document.createElement("td");
+                senderCell.textContent = transaction.sender;
+                row.appendChild(senderCell);
+
+                var receiverCell = document.createElement("td");
+                receiverCell.textContent = transaction.receiver;
+                row.appendChild(receiverCell);
+
+                var totalAmountCell = document.createElement("td");
+                totalAmountCell.textContent = transaction.totalAmount;
+                row.appendChild(totalAmountCell);
+
+                var totalPaidAmountCell = document.createElement("td");
+                totalPaidAmountCell.textContent = transaction.totalPaidAmount;
+                row.appendChild(totalPaidAmountCell);
+
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        function openChildTransactions(parentId) {
+            window.open(`/child-transactions.html?parentId=${parentId}`);
+        }
+
+        function handleNextButtonClick() {
+            currentPage++;
+            fetchParentTransactions(currentPage);
+        }
+
+        var nextButton = document.getElementById("nextButton");
+        nextButton.addEventListener("click", handleNextButtonClick);
+
+        fetchParentTransactions(currentPage);
+    </script>
+</body>
+</html>

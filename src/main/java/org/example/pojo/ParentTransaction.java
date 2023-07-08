@@ -20,4 +20,7 @@ public class ParentTransaction {
 
     @JsonProperty("totalAmount")
     private float totalAmount;
+
+    @JsonProperty("totalPaidAmount")
+    private float totalPaidAmount;
 }

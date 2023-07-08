@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Child Transactions</title>
+</head>
+<body>
+<h1>Child Transactions</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Child ID</th>
+    <th>Sender</th>
+    <th>Receiver</th>
+    <th>Total Amount</th>
+    <th>Paid Amount</th>
+  </tr>
+  </thead>
+  <tbody id="childTransactionsTableBody"></tbody>
+</table>
+
+<script>
+        function fetchChildTransactions(parentId) {
+            fetch(`http://localhost:8080/api/v1/get_txn_for_child?parentId=${parentId}`)
+                .then(response => response.json())
+                .then(data => displayChildTransactions(data.data));
+        }
+
+        function displayChildTransactions(transactions) {
+        console.log(transactions)
+            var tableBody = document.getElementById("childTransactionsTableBody");
+            tableBody.innerHTML = "";
+
+            transactions.forEach(transaction => {
+                var row = document.createElement("tr");
+
+                var childIdCell = document.createElement("td");
+                childIdCell.textContent = transaction.id;
+                row.appendChild(childIdCell);
+
+                var senderCell = document.createElement("td");
+                senderCell.textContent = transaction.sender;
+                row.appendChild(senderCell);
+
+                var receiverCell = document.createElement("td");
+                receiverCell.textContent = transaction.receiver;
+                row.appendChild(receiverCell);
+
+                var totalAmountCell = document.createElement("td");
+                totalAmountCell.textContent = transaction.totalAmount;
+                row.appendChild(totalAmountCell);
+
+                var paidAmountCell = document.createElement("td");
+                paidAmountCell.textContent = transaction.paidAmount;
+                row.appendChild(paidAmountCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Get the parentId from the query parameter in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const parentId = urlParams.get('parentId');
+
+        fetchChildTransactions(parentId);
+    </script>
+</body>
+</html>
